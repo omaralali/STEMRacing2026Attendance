@@ -47,14 +47,14 @@
             font-weight: 600;
             font-size: 14px;
         }
-        input, select {
+        input {
             width: 100%;
             padding: 14px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
         }
-        input:focus, select:focus {
+        input:focus {
             outline: none;
             border-color: #e63946;
             box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
@@ -123,16 +123,7 @@
 
             <div class="form-group">
                 <label for="role">Role</label>
-                <select id="role" required>
-                    <option value="">Select your role</option>
-                    <option value="Driver">Driver</option>
-                    <option value="Mechanical">Mechanical Engineer</option>
-                    <option value="Electrical">Electrical Engineer</option>
-                    <option value="Software">Software Engineer</option>
-                    <option value="Team Lead">Team Lead</option>
-                    <option value="Member">General Member</option>
-                    <option value="Other">Other</option>
-                </select>
+                <input type="text" id="role" required placeholder="Enter your role" autocomplete="off">
             </div>
 
             <button type="submit" id="submitBtn">✓ Check In</button>
@@ -183,7 +174,7 @@
 
             const memberName = document.getElementById('memberName').value.trim();
             const teamName = document.getElementById('teamName').value.trim();
-            const role = document.getElementById('role').value;
+            const role = document.getElementById('role').value.trim();
             const checkInTime = new Date();
             const status = getAttendanceStatus(checkInTime);
 
@@ -204,7 +195,7 @@
                 memberName: memberName,
                 teamName: teamName,
                 role: role,
-                time: checkInTime.toTimeString().split(' ')[0], // Just HH:MM:SS
+                time: checkInTime.toTimeString().split(' ')[0],
                 status: status,
                 ipAddress: ipAddress
             };
